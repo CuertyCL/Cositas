@@ -69,8 +69,10 @@ $user_path = [System.Environment]::GetEnvironmentVariable("Path", [System.Enviro
 
 # Variable que indica la ruta del Json que contiene información acerca de programas.
 # Funciona como una especie de base de datos simple.
-$program_info_file = $PSScriptRoot+"\Programas.json"
-$modify_program_file = $PSScriptRoot+"\modificar.ps1"
+$programs_json = (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/CuertyCL/Cositas/main/Programas.json" -UseBasicParsing)
+$parsed_json = $programs_json.Content | ConvertFrom-Json
+
+$modify_program_file = "https://raw.githubusercontent.com/CuertyCL/Cositas/main/modificar.ps1"
 
 # Función que, en lo posible, devuelve la versión del programa.
 # En caso de no encontrarla, se devuelve un texto vacío
@@ -243,6 +245,7 @@ function Install-Programs {
             "netbeans_jdkhome=$([System.Environment]::GetEnvironmentVariable("JAVA_HOME", [System.EnvironmentVariableTarget]::User))" >> ($program_dir+"\"+$program_name+"\netbeans\etc\netbeans.conf")
         }
 
+        Invoke-WebRequest -Uri $modify_program_file -OutFile ($program_dir+"\"+$program_name+"\modificar.ps1")
         Copy-Item -Path $modify_program_file -Destination ($program_dir+"\"+$program_name)
         Set-ItemProperty -Path $registry_program_path -Name "ModifyPath" -Value ("powershell.exe -ExecutionPolicy Bypass -File `"" + $program_dir + "\" + $program_name + "\modificar.ps1`"") -Type "String"
 
@@ -283,6 +286,6 @@ Write-Host "Que Programa quieres Instalar?"
 for ($i = 0; $i -le ($jsonPrograms.programs.name.Length-1) ; $i++) {
     "$($i+1). " + $jsonPrograms.programs.name[$i]
 }
-$op = Get-IntegerOption -min 1 -max $jsonPrograms.programs.name.Length
+$op = Get-IntegerOption -min 1 -max $parsed_json.programs.name.Length
 
-Install-Programs -program_json_file $jsonPrograms -op $op
+Install-Programs -program_json_file $parsed_json -op $op
