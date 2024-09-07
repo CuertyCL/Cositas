@@ -279,12 +279,9 @@ function Install-Programs {
     Remove-Item -Path $program_file
 }
 
-
-$jsonPrograms = Get-Content -Raw -Path $program_info_file | ConvertFrom-Json
-
 Write-Host "Que Programa quieres Instalar?"
-for ($i = 0; $i -le ($jsonPrograms.programs.name.Length-1) ; $i++) {
-    "$($i+1). " + $jsonPrograms.programs.name[$i]
+for ($i = 0; $i -le ($parsed_json.programs.name.Length-1) ; $i++) {
+    "$($i+1). " + $parsed_json.programs.name[$i]
 }
 $op = Get-IntegerOption -min 1 -max $parsed_json.programs.name.Length
 
