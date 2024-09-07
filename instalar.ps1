@@ -246,7 +246,6 @@ function Install-Programs {
         }
 
         Invoke-WebRequest -Uri $modify_program_file -OutFile ($program_dir+"\"+$program_name+"\modificar.ps1")
-        Copy-Item -Path $modify_program_file -Destination ($program_dir+"\"+$program_name)
         Set-ItemProperty -Path $registry_program_path -Name "ModifyPath" -Value ("powershell.exe -ExecutionPolicy Bypass -File `"" + $program_dir + "\" + $program_name + "\modificar.ps1`"") -Type "String"
 
 
