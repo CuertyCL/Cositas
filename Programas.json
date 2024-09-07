@@ -1,0 +1,125 @@
+{
+    "programs": [
+        {
+            "name": "PowerShell Core",
+            "executable": "pwsh.exe",
+            "author_repo": "PowerShell",
+            "repo": "PowerShell",
+            "publisher": "Microsoft Corporation",
+            "treatment": "ZIP",
+            "file_pattern": "*win-x64.zip",
+            "addShortcut": true,
+            "arg_list": " "
+        }, 
+        {
+            "name": "SQLite",
+            "executable": "sqlite3.exe",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "sqlite.org",
+            "treatment": "ZIP",
+            "file_pattern": "sqlite*.zip",
+            "addShortcut": false,
+            "arg_list": " "
+        },
+        {
+            "name": "OpenJDK",
+            "executable": "java.exe",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "Oracle Corporation",
+            "treatment": "JAVA",
+            "file_pattern": "openjdk*.zip",
+            "addShortcut": false,
+            "arg_list": " "
+        },
+        {
+            "name": "Clavier +",
+            "executable": "Clavier.exe",
+            "author_repo": "guilryder",
+            "repo": "clavier-plus",
+            "publisher": "guilryder",
+            "treatment": "ZIP",
+            "file_pattern": "*.zip",
+            "addShortcut": true,
+            "arg_list": " "
+        },
+        {
+            "name": "AltDrag",
+            "executable": "AltDrag.exe",
+            "author_repo": "stefansundin",
+            "repo": "altdrag",
+            "publisher": "stefansundin",
+            "treatment": "ZIP",
+            "file_pattern": "*.zip",
+            "addShortcut": true,
+            "arg_list": " "
+        },
+        {
+            "name": "Apache NetBeans",
+            "executable": "netbeans.exe",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "The Apache Software Foundation",
+            "treatment": "ZIP",
+            "file_pattern": "netbeans*.zip",
+            "addShortcut": true,
+            "arg_list": " "
+        },
+        {
+            "name": "DB Browser for SQLite",
+            "executable": "DB Browser for SQLite.exe",
+            "author_repo": "sqlitebrowser",
+            "repo": "sqlitebrowser",
+            "publisher": "sqlitebrowser.org",
+            "treatment": "ZIP",
+            "file_pattern": "*win64.zip",
+            "addShortcut": true,
+            "arg_list": " "
+        },
+        {
+            "name": "TinyC",
+            "executable": "tcc.exe",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "Fabrice Bellard",
+            "treatment": "ZIP",
+            "file_pattern": "tcc*.zip",
+            "addShortcut": false,
+            "arg_list": " "
+        },
+        {
+            "name": "Visual Studio Code",
+            "executable": "Code.exe",
+            "author_repo": " ",
+            "repo": " ",
+            "publisher": "Microsoft Corporation",
+            "treatment": "EXE",
+            "file_pattern": " ",
+            "addShortcut": false,
+            "arg_list": "/SILENT /CURRENTUSER /NORESTART"
+        },
+        {
+            "name": "Python",
+            "executable": "python.exe",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "python.org",
+            "treatment": "EXE",
+            "file_pattern": "python*.exe",
+            "addShortcut": false,
+            "arg_list": "/passive InstallAllUsers=0 InstallLauncherAllUsers=0"
+        },
+        {
+            "name": "Windows Terminal",
+            "executable": "WindowsTerminal.exe",
+            "author_repo": "microsoft",
+            "repo": "terminal",
+            "publisher": "Microsoft Corporation",
+            "treatment":"ZIP",
+            "file_pattern":"*x64.zip",
+            "addShortcut":true,
+            "arg_list": " "
+        }
+    ]
+}
