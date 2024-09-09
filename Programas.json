@@ -120,6 +120,17 @@
             "file_pattern":"*x64.zip",
             "addShortcut":true,
             "arg_list": " "
+        },
+        {
+            "name": "PowerToys",
+            "executable": "",
+            "author_repo": "microsoft",
+            "repo": "PowerToys",
+            "publisher": "Microsoft Corporation",
+            "treatment": "EXE",
+            "file_pattern": "PowerToysUserSetup*x64.exe",
+            "addShortcut": false,
+            "arg_list": "/passive /norestart"
         }
     ]
 }
