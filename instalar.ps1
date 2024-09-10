@@ -27,31 +27,6 @@ function Get-Username {
 }
 
 
-# Función que verifica que la opción ingresada es un número entero, y además verifica que sea un número válido
-function Get-IntegerOption {
-    param (
-        [int] $min,
-        [int] $max
-    )
-
-    
-    do {
-        $number = 0
-        $input = Read-Host " "
-
-        # Intenta convertir el input a un entero
-        $isValid = [int]::TryParse($input, [ref]$number)
-        
-        # Verifica que sea un entero y que esté dentro del rango
-        if ($isValid -and $number -ge $min -and $number -le $max) {
-            return $number
-        } else {
-            Out-Null
-        }
-    } while ($true)
-}
-
-
 # Variables relacionadas a directorios del sistema. En lo posible, no se ocuparán variables de entorno, debido a su volatilidad.
 # Sin embargo, se asumirá que existen dichos directorios, ya que son escenciales para el comportamiento de windows.
 
@@ -216,7 +191,6 @@ function Install-Programs {
         }
 
         $registry_program_path = $registry_uninstall_key+$name_without_space
-        $registry_program_info_path = $registry_program_info+$name_without_space
 
         # Añade los valores correspondientes en la llave
         Set-ItemProperty -Path $registry_program_path -Name "DisplayName" -Value ($program_name) -Type "String"
@@ -278,10 +252,46 @@ function Install-Programs {
     Remove-Item -Path $program_file
 }
 
+# Función para obtener los números válidos
+function Obtener-NumerosValidos {
+    param (
+        [Parameter(Mandatory = $true)]
+        [int[]]$NumerosValidos
+    )
+    $numeros = @()
+    
+    Write-Host "Ingresa los números de los programas, separados por comas (por ejemplo, 1,2,3,4)"
+    while ($true) {
+        $entrada = Read-Host -Prompt " "
+        $partes = $entrada -split ','
+
+        $esValido = $true
+        $numeros = @()  # Limpiar la lista antes de intentar llenarla con nueva entrada
+
+        foreach ($parte in $partes) {
+            if ($parte.Trim() -match '^\d+$' -and [int]$parte.Trim() -in $NumerosValidos) {
+                $numeros += [int]$parte.Trim()
+            } else {
+                $esValido = $false
+                break
+            }
+        }
+
+        if ($esValido) {
+            return $numeros  # Retornar la lista de números válidos
+        }
+    }
+}
+
+# Ejemplo de uso de la función
 Write-Host "Que Programa quieres Instalar?"
-for ($i = 0; $i -le ($parsed_json.programs.name.Length-1) ; $i++) {
+for ($i = 0; $i -le ($parsed_json.programs.name.Length-1); $i++) {
     "$($i+1). " + $parsed_json.programs.name[$i]
 }
-$op = Get-IntegerOption -min 1 -max $parsed_json.programs.name.Length
 
-Install-Programs -program_json_file $parsed_json -op $op
+$numerosValidos = 1..$parsed_json.programs.name.Length
+$numerosElegidos = Obtener-NumerosValidos -NumerosValidos $numerosValidos
+
+foreach ($numero in $numerosElegidos) {
+    Install-Programs -program_json_file $parsed_json -op $numero
+}
