@@ -100,17 +100,103 @@ function Compress-Program {
     Start-Process powershell -ArgumentList "-ExecutionPolicy Bypass -File $temp_file" -WindowStyle Hidden
 }
 
+# Función que se encarga de reinstalar el programa. Tambien sirve para actualizar dicho programa
+function Update-Program {
+    Write-Host "Iniciando Proceso de Reinstalacion..."
+
+    Write-Host "Borrando Programa..."
+    Remove-Item "$PSScriptRoot\*" -Exclude "$PSScriptRoot\modificar.ps1" -Force
+
+
+
+    $program_name = (Get-ItemProperty -Path "HKCU:\Software\RepoInstaller\WindowsTerminal").Name,  # Nombre del programa
+    $program_author = (Get-ItemProperty -Path "HKCU:\Software\RepoInstaller\WindowsTerminal").Author_Repo,  # Nombre del autor del repositorio del programa. No necesariamente el creador original
+    $program_repo = (Get-ItemProperty -Path "HKCU:\Software\RepoInstaller\WindowsTerminal").Repo,  # Nombre del repositorio del programa
+    $publisher = (Get-ItemProperty -Path "HKCU:\Software\RepoInstaller\WindowsTerminal").Publisher,  # Nombre del autor, organización, etc, del programa 
+    $treatment = (Get-ItemProperty -Path "HKCU:\Software\RepoInstaller\WindowsTerminal").Treatment,  # Determina como se debe tratar el archivo. El valor de esta variable determina el comportamiento de la función
+    $file_pattern = (Get-ItemProperty -Path "HKCU:\Software\RepoInstaller\WindowsTerminal").file_pattern,  # Patrón que se debe buscar para encontrar el URL del programa
+    $addShortcut = (Get-ItemProperty -Path "HKCU:\Software\RepoInstaller\WindowsTerminal").AddShortcut,  # Identifica si se debe crear un Acceso Directo
+    $arg_list = (Get-ItemProperty -Path "HKCU:\Software\RepoInstaller\WindowsTerminal").Arg_List  # Opciones para usar en el instalador (En caso de que "treatment sea EXE").
+    $executable = (Get-ItemProperty -Path "HKCU:\Software\RepoInstaller\WindowsTerminal").Executable  # Nombre del ejecutable principal del programa
+
+
+
+    $program_json_url = ("https://api.github.com/repos/" + $program_author + "/" + $program_repo + "/releases/latest")
+
+
+
+    if ($treatment -eq "EXE") {
+        $program_file = $temp_dir + "\program.exe"
+    } else {
+        $program_file = $temp_dir + "\program.zip"
+    }
+
+    Write-Host "Reinstalando $program_name"
+    Write-Host "Obteniendo informacion del Programa..."
+
+    # Descarga el Archivo con información
+    $ProgressPreference = 'SilentlyContinue'
+    Invoke-WebRequest -URI $program_json_url -OutFile $program_json 
+
+    $jsonContent = Get-Content -Raw -Path $program_json | ConvertFrom-Json
+
+    $product = $jsonContent.assets | Where-Object { $_.name -like $file_pattern }
+    $program_url = $product.browser_download_url  # Asigna el URL encontrado a una variable 
+
+    Write-Host "Descargando Archivo del Programa..."
+    Invoke-WebRequest -URI $program_url -OutFile $program_file
+
+    
+    # Instala el programa
+    if ($treatment -eq "EXE") {
+        Write-Host "Ejecutando Instalador..."
+        Start-Process ($program_file) -ArgumentList ($arg_list)
+    } else {
+        Write-Host "Descomprimiendo Archivo..."
+        Expand-Archive -Force -Path ($program_file) -DestinationPath ($PSScriptRoot)
+
+        # Primero se encuentra el directorio donde se ubica el ejecutable
+        $exe_dir = (Get-ChildItem -Path ($PSScriptRoot) -Recurse $executable).Directory.FullName
+       
+        # Agrega los valores necesarios en el registro de Windows
+        Write-Host "Anadiendo registros..."
+
+        # Crea la llave del programa en el registro, en caso de no existir
+        $name_without_space = $program_name.Replace(" ", "")
+
+        if (-NOT (Test-Path -Path ($registry_uninstall_key+$name_without_space))) {
+            New-Item -Path $registry_uninstall_key -Name $name_without_space | Out-Null
+        }
+
+        $registry_program_path = $registry_uninstall_key+$name_without_space
+
+        # Añade los valores correspondientes en la llave
+        Set-ItemProperty -Path $registry_program_path -Name "DisplayName" -Value ($program_name) -Type "String"
+        Set-ItemProperty -Path $registry_program_path -Name "DisplayIcon" -Value ($exe_dir+"\"+$executable) -Type "String"
+        Set-ItemProperty -Path $registry_program_path -Name "DisplayVersion" -Value (Get-Version -executable ($exe_dir+"\"+$executable)) -Type "String"
+        Set-ItemProperty -Path $registry_program_path -Name "InstallDate" -Value (Get-Date -Format "yyyy-MM-dd") -Type "String"
+        Set-ItemProperty -Path $registry_program_path -Name "InstallLocation" -Value ($PSScriptRoot) -Type "String"
+        Set-ItemProperty -Path $registry_program_path -Name "EstimatedSize" -Value (Get-Size -program_install_dir ($PSScriptRoot)) -Type "DWORD"
+
+
+        # Actualiza los registros que son volatiles a cambiar en un futuro
+        Set-ItemProperty -Path ($registry_program_info+$name_without_space) -Name "Arg_List" -Value $arg_list -Type "String"
+        Set-ItemProperty -Path ($registry_program_info+$name_without_space) -Name "AddShortcut" -Value $addShortcutValue -Type "DWORD"
+        Set-ItemProperty -Path ($registry_program_info+$name_without_space) -Name "Executable" -Value $executable -Type "String"
+    }
+}
+
 # Función que pregunta al usuario qué desea hacer
 function Get-Option {
     Write-Host "Elige una Opcion."
     Write-Host "1. Comprimir Programa"
-    Write-Host "2. Reinstalar Programa"
+    Write-Host "2. Reinstalar/Actualizar Programa"
 
     $op = Get-IntegerOption -min 1 -max 2
 
     switch ($op) {
         1 { Compress-Program }
-        2 { Out-Null }
+        2 { Update-Program }
     }
 }
 
