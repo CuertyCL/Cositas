@@ -131,6 +131,17 @@
             "file_pattern": "PowerToysUserSetup*x64.exe",
             "addShortcut": false,
             "arg_list": "/passive /norestart"
+        },
+        {
+            "name": "Git",
+            "executable": "git.exe",
+            "author_repo": "git-for-windows",
+            "repo": "git",
+            "publisher": "GIT",
+            "treatment": "EXE",
+            "file_pattern": "Git*64-bit.exe",
+            "addShortcut": false,
+            "arg_list": "/SILENT /NORESTART"
         }
     ]
 }
