@@ -142,6 +142,17 @@
             "file_pattern": "Git*64-bit.exe",
             "addShortcut": false,
             "arg_list": "/SILENT /NORESTART"
+        },
+        {
+            "name": "Lively Wallpaper",
+            "executable": "lively.exe",
+            "author_repo": "rocksdanister",
+            "repo": "lively",
+            "publisher": "rocksdanister",
+            "treatment": "EXE",
+            "file_pattern": "lively_setup*.exe",
+            "addShortcut": false,
+            "arg_list": "/SILENT /NORESTART"
         }
     ]
 }
