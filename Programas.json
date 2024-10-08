@@ -100,6 +100,17 @@
             "arg_list": "/SILENT /CURRENTUSER /NORESTART"
         },
         {
+            "name": "VSCodium",
+            "executable": "codium.cmd",
+            "author_repo": "VSCodium",
+            "repo": "vscodium",
+            "publisher": "VSCodium",
+            "treatment": "ZIP",
+            "file_pattern": "*win32-x64-*.zip",
+            "addShortcut": true,
+            "arg_list": " "
+        },
+        {
             "name": "Python",
             "executable": "python.exe",
             "author_repo": "CuertyCL",
