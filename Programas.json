@@ -57,12 +57,23 @@
         },
         {
             "name": "Apache NetBeans",
-            "executable": "netbeans.exe",
+            "executable": "idea64.exe",
             "author_repo": "CuertyCL",
             "repo": "Cositas",
             "publisher": "The Apache Software Foundation",
             "treatment": "ZIP",
-            "file_pattern": "netbeans*.zip",
+            "file_pattern": "ideaIC*.zip",
+            "addShortcut": true,
+            "arg_list": " "
+        },
+        {
+            "name": "IntelliJ IDEA",
+            "executable": "idea.exe",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "JetBrains",
+            "treatment": "ZIP",
+            "file_pattern": "I*.zip",
             "addShortcut": true,
             "arg_list": " "
         },
