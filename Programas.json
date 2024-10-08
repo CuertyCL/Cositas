@@ -101,7 +101,7 @@
         },
         {
             "name": "VSCodium",
-            "executable": "codium.cmd",
+            "executable": "VSCodium.exe",
             "author_repo": "VSCodium",
             "repo": "vscodium",
             "publisher": "VSCodium",
