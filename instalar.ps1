@@ -143,7 +143,7 @@ function Install-Programs {
 
     # Descarga el Archivo con información
     $ProgressPreference = 'SilentlyContinue'
-    Invoke-WebRequest -URI $program_json_url -OutFile $program_json 
+    Invoke-WebRequest -UseBasicParsing -URI $program_json_url -OutFile $program_json 
 
     $jsonContent = Get-Content -Raw -Path $program_json | ConvertFrom-Json
 
