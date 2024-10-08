@@ -68,7 +68,7 @@
         },
         {
             "name": "IntelliJ IDEA",
-            "executable": "idea.exe",
+            "executable": "idea64.exe",
             "author_repo": "CuertyCL",
             "repo": "Cositas",
             "publisher": "JetBrains",
