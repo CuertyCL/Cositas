@@ -175,6 +175,17 @@
             "file_pattern": "lively_setup*.exe",
             "addShortcut": false,
             "arg_list": "/SILENT /NORESTART"
+        },
+        {
+            "name": "OneCommander",
+            "executable": "OneCommander.exe",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "Electronic Team Inc",
+            "treatment": "ZIP",
+            "file_pattern": "onecommander.zip",
+            "addShortcut": true,
+            "arg_list": " "
         }
     ]
 }
