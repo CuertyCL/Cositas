@@ -186,6 +186,17 @@
             "file_pattern": "onecommander.zip",
             "addShortcut": true,
             "arg_list": " "
+        },
+        {
+            "name": "Arduino IDE",
+            "executable": "Arduino IDE.exe",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "Arduino INC",
+            "treatment": "ZIP",
+            "file_pattern": "arduino*.zip",
+            "addShortcut": true,
+            "arg_list": " "
         }
     ]
 }
