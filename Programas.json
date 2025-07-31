@@ -197,6 +197,17 @@
             "file_pattern": "arduino*.zip",
             "addShortcut": true,
             "arg_list": " "
+        },
+        {
+            "name": "Godot",
+            "executable": "Godot.exe",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "godot",
+            "treatment": "ZIP",
+            "file_pattern": "Godot*.zip",
+            "addShortcut": true,
+            "arg_list": " "
         }
     ]
 }
