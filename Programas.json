@@ -208,6 +208,18 @@
             "file_pattern": "Godot*.zip",
             "addShortcut": true,
             "arg_list": " "
+        },
+        {
+            "name": "Terminals (Escritorio Remoto)",
+            "executable": "Terminals.exe",
+            "author_repo": "Terminals-Origin",
+            "repo": "Terminals",
+            "publisher": "Terminals-Origin",
+            "treatment": "ZIP",
+            "file_pattern": "Terminals*.zip",
+            "addShortcut": true,
+            "arg_list": " "
         }
     ]
 }
+
