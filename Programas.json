@@ -219,7 +219,19 @@
             "file_pattern": "Terminals*.zip",
             "addShortcut": true,
             "arg_list": " "
+        },
+        {
+            "name": "Mozilla Firefox",
+            "executable": "firefox.exe",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "Mozilla",
+            "treatment": "ZIP",
+            "file_pattern": "firefox.zip",
+            "addShortcut": true,
+            "arg_list": " "
         }
     ]
 }
+
 
