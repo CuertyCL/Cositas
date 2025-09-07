@@ -230,8 +230,20 @@
             "file_pattern": "firefox.zip",
             "addShortcut": true,
             "arg_list": " "
+        },
+        {
+            "name": "Filezilla",
+            "executable": "filezilla.exe",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "Filezilla",
+            "treatment": "ZIP",
+            "file_pattern": "filezilla.zip",
+            "addShortcut": true,
+            "arg_list": " "
         }
     ]
 }
+
 
 
