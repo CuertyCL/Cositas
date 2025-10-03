@@ -100,24 +100,13 @@
             "arg_list": " "
         },
         {
-            "name": "Visual Studio Code (No Funciona)",
+            "name": "Visual Studio Code",
             "executable": "Code.exe",
-            "author_repo": " ",
-            "repo": " ",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
             "publisher": "Microsoft Corporation",
-            "treatment": "EXE",
-            "file_pattern": " ",
-            "addShortcut": false,
-            "arg_list": "/SILENT /CURRENTUSER /NORESTART"
-        },
-        {
-            "name": "VSCodium",
-            "executable": "VSCodium.exe",
-            "author_repo": "VSCodium",
-            "repo": "vscodium",
-            "publisher": "VSCodium",
             "treatment": "ZIP",
-            "file_pattern": "*win32-x64-*.zip",
+            "file_pattern": "vscode.zip",
             "addShortcut": true,
             "arg_list": " "
         },
@@ -244,6 +233,7 @@
         }
     ]
 }
+
 
 
 
