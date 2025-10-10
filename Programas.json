@@ -230,9 +230,21 @@
             "file_pattern": "filezilla.zip",
             "addShortcut": true,
             "arg_list": " "
+        },
+        {
+            "name": "Vim",
+            "executable": "vim.exe",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "vim",
+            "treatment": "ZIP",
+            "file_pattern": "vim.zip",
+            "addShortcut": false,
+            "arg_list": " "
         }
     ]
 }
+
 
 
 
