@@ -222,7 +222,7 @@
         },
         {
             "name": "Kate",
-            "executable": "bin\\kate.exe",
+            "executable": "kate.exe",
             "author_repo": "CuertyCL",
             "repo": "Cositas",
             "publisher": "KDE",
