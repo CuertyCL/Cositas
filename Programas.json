@@ -241,6 +241,17 @@
             "file_pattern": "vim.zip",
             "addShortcut": false,
             "arg_list": " "
+        },
+        {
+            "name": "Kate",
+            "executable": "bin\\kate.exe",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "KDE",
+            "treatment": "ZIP",
+            "file_pattern": "kate.zip",
+            "addShortcut": true,
+            "arg_list": " "
         }
     ]
 }
