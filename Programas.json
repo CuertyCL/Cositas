@@ -67,17 +67,6 @@
             "arg_list": " "
         },
         {
-            "name": "IntelliJ IDEA",
-            "executable": "idea64.exe",
-            "author_repo": "CuertyCL",
-            "repo": "Cositas",
-            "publisher": "JetBrains",
-            "treatment": "ZIP",
-            "file_pattern": "I*.zip",
-            "addShortcut": true,
-            "arg_list": " "
-        },
-        {
             "name": "DB Browser for SQLite",
             "executable": "DB Browser for SQLite.exe",
             "author_repo": "sqlitebrowser",
@@ -173,17 +162,6 @@
             "publisher": "Electronic Team Inc",
             "treatment": "ZIP",
             "file_pattern": "onecommander.zip",
-            "addShortcut": true,
-            "arg_list": " "
-        },
-        {
-            "name": "Arduino IDE",
-            "executable": "Arduino IDE.exe",
-            "author_repo": "CuertyCL",
-            "repo": "Cositas",
-            "publisher": "Arduino INC",
-            "treatment": "ZIP",
-            "file_pattern": "arduino*.zip",
             "addShortcut": true,
             "arg_list": " "
         },
