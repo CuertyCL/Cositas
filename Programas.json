@@ -241,6 +241,17 @@
             "file_pattern": "kotlin*compiler*.zip",
             "addShortcut": false,
             "arg_list": " "
+        },
+        {
+            "name": "Gradle",
+            "executable": "gradle.bat",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "gradle",
+            "treatment": "ZIP",
+            "file_pattern": "gradle.zip",
+            "addShortcut": false,
+            "arg_list": " "
         }
     ]
 }
