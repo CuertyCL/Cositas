@@ -28,7 +28,7 @@
             "author_repo": "CuertyCL",
             "repo": "Cositas",
             "publisher": "Oracle Corporation",
-            "treatment": "JAVA",
+            "treatment": "ZIP",
             "file_pattern": "openjdk*.zip",
             "addShortcut": false,
             "arg_list": " "
