@@ -238,7 +238,7 @@
             "repo": "kotlin",
             "publisher": "JetBrains",
             "treatment": "ZIP",
-            "file_pattern": "kotlin-compiler*.zip",
+            "file_pattern": "kotlin*compiler*.zip",
             "addShortcut": false,
             "arg_list": " "
         }
