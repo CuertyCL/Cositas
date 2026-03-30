@@ -230,6 +230,17 @@
             "file_pattern": "kate.zip",
             "addShortcut": true,
             "arg_list": " "
+        },,
+        {
+            "name": "Kotlin",
+            "executable": "kotlinc",
+            "author_repo": "JetBrains",
+            "repo": "kotlin",
+            "publisher": "JetBrains",
+            "treatment": "ZIP",
+            "file_pattern": "kotlin-compiler*.zip",
+            "addShortcut": false,
+            "arg_list": " "
         }
     ]
 }
