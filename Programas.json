@@ -230,7 +230,7 @@
             "file_pattern": "kate.zip",
             "addShortcut": true,
             "arg_list": " "
-        },,
+        },
         {
             "name": "Kotlin",
             "executable": "kotlinc",
