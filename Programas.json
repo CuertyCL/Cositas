@@ -252,6 +252,17 @@
             "file_pattern": "gradle.zip",
             "addShortcut": false,
             "arg_list": " "
+        },
+        {
+            "name": "Apache Maven",
+            "executable": "mvn.cmd",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "Apache",
+            "treatment": "ZIP",
+            "file_pattern": "maven.zip",
+            "addShortcut": false,
+            "arg_list": " "
         }
     ]
 }
