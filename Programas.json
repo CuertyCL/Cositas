@@ -263,6 +263,17 @@
             "file_pattern": "maven.zip",
             "addShortcut": false,
             "arg_list": " "
+        },
+        {
+            "name": "Android Tools",
+            "executable": "sdkmanager.bat",
+            "author_repo": "CuertyCL",
+            "repo": "Cositas",
+            "publisher": "Google",
+            "treatment": "ZIP",
+            "file_pattern": "androidtools.zip",
+            "addShortcut": false,
+            "arg_list": " "
         }
     ]
 }
